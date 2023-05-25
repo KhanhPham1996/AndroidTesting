@@ -51,7 +51,7 @@ class ShoppingViewModelTest {
                 append("s")
             }
         }
-        shoppingViewModel.insertShoppingItem(string,"5","3.0")
+        shoppingViewModel.insertShoppingItem(name = string,"5","3.0")
         val result =shoppingViewModel.insertShoppingItemStatus.getOrAwaitValue()
 
         assertThat(result.getContentIfNotHandled()?.status).isEqualTo(Status.ERROR)
