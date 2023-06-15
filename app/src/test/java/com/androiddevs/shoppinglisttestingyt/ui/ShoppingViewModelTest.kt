@@ -37,9 +37,8 @@ class ShoppingViewModelTest {
 
     @Test
     fun `insert shopping item  with empty field return error`(){
-        shoppingViewModel.insertShoppingItem("name","","3.0")
+        shoppingViewModel.insertShoppingItem("","3","3.0")
         val result =shoppingViewModel.insertShoppingItemStatus.getOrAwaitValue()
-
         assertThat(result.getContentIfNotHandled()?.status).isEqualTo(Status.ERROR)
 
     }
@@ -51,7 +50,7 @@ class ShoppingViewModelTest {
                 append("s")
             }
         }
-        shoppingViewModel.insertShoppingItem(name = string,"5","3.0")
+        shoppingViewModel.insertShoppingItem(name = string, amountString = "5", priceString = "3.0")
         val result =shoppingViewModel.insertShoppingItemStatus.getOrAwaitValue()
 
         assertThat(result.getContentIfNotHandled()?.status).isEqualTo(Status.ERROR)

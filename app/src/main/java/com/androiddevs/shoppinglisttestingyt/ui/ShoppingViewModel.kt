@@ -43,13 +43,15 @@ class ShoppingViewModel @ViewModelInject constructor(
     fun insertShoppingItem(name : String, amountString : String, priceString: String){
         if(name.isEmpty() || amountString.isEmpty() || priceString.isEmpty()){
             _insertShoppingItemStatus.postValue(Event(Resource.error("Field where?",null)))
+            return
         }
         if (name.length > MAX_NAME_LENGTH){
-            _insertShoppingItemStatus.postValue(Event(Resource.error("Too Long?",null)))
-
+            _insertShoppingItemStatus.postValue(Event(Resource.error("Too LongNameeee?",null)))
+            return
         }
         if (priceString.length > MAX_PRICE_LENGTH){
             _insertShoppingItemStatus.postValue(Event(Resource.error("Too Long?",null)))
+            return
 
         }
         val amount = try {
